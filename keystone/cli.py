@@ -52,7 +52,10 @@ class DbSync(BaseApp):
 
     def main(self):
         for k in ['identity', 'catalog', 'policy', 'token']:
+            print k
+            print getattr(CONF, k).driver
             driver = utils.import_object(getattr(CONF, k).driver)
+            print("driver=%s" % driver)
             if hasattr(driver, 'db_sync'):
                 driver.db_sync()
 

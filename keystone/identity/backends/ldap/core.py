@@ -378,6 +378,7 @@ class TenantApi(common_ldap.BaseLdap, ApiShimMixin):
     DEFAULT_MEMBER_ATTRIBUTE = 'member'
     options_name = 'tenant'
     attribute_mapping = {'description': 'desc', 'name': 'ou'}
+    attribute_ignore = ['tenant_id', 'enabled', 'tenants']
     model = models.Tenant
 
     def __init__(self, conf):
@@ -503,6 +504,7 @@ class RoleApi(common_ldap.BaseLdap, ApiShimMixin):
     attribute_mapping = {'name': 'cn',
                          #'serviceId': 'service_id',
                          }
+    attribute_ignore = ['tenant_id', 'enabled', 'tenants']
     model = models.Tenant
 
     def __init__(self, conf):
